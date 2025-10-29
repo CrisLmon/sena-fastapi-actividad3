@@ -13,6 +13,11 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
+@app.get("/saludo/{nombre}")
+def saludo(nombre: str):
+    return {"saludo": f"¡Hola, {nombre}!"}
+
+
 # Ejecutar la aplicación
 # uvicorn main:app --reload
 if __name__ == "__main__":
