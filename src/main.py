@@ -13,12 +13,10 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
-@app.get("/config")
-def config(
-    modo: str = "produccion",
-    version: float = 1.0
-):
-    return {"modo": modo, "version": version}
+@app.get("/saludo/{nombre}")
+def saludo(nombre: str):
+    return {"saludo": f"¡Hola, {nombre}!"}
+
 
 # Ejecutar la aplicación
 @app.get("/item/{item_id}")
