@@ -13,6 +13,14 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
+@app.get("/config")
+def config(
+    modo: str = "produccion",
+    version: float = 1.0
+):
+    return {"modo": modo, "version": version}
+
+# Ejecutar la aplicación
 @app.get("/item/{item_id}")
 def obtener_item(
     item_id: int,
@@ -21,8 +29,6 @@ def obtener_item(
     ):
     
     return { "item_id": item_id, "q": q, "activo": activo}
-
-
 
 # uvicorn main:app --reload
 if __name__ == "__main__":
