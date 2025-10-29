@@ -13,7 +13,17 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
-# Ejecutar la aplicación
+@app.get("/item/{item_id}")
+def obtener_item(
+    item_id: int,
+    q: str = None,
+    activo: bool = True
+    ):
+    
+    return { "item_id": item_id, "q": q, "activo": activo}
+
+
+
 # uvicorn main:app --reload
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
