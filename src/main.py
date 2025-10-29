@@ -13,6 +13,13 @@ app.add_middleware(
     allow_headers=["*"],  
 )
 
+@app.get("/config")
+def config(
+    modo: str = "produccion",
+    version: float = 1.0
+):
+    return {"modo": modo, "version": version}
+
 # Ejecutar la aplicación
 # uvicorn main:app --reload
 if __name__ == "__main__":
